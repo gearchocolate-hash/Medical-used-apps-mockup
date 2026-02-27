@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med2Hand - Full Buyer Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Prompt', sans-serif; background-color: #f3f4f6; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom Colors */
+        .bg-navy { background-color: #0A1931; }
+        .text-navy { color: #0A1931; }
+        .border-navy { border-color: #0A1931; }
+        
+        .bg-magenta { background-color: #D81B60; }
+        .text-magenta { color: #D81B60; }
+        .border-magenta { border-color: #D81B60; }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen py-10">
+
+    <div class="bg-white w-full max-w-[400px] h-[800px] rounded-[40px] shadow-2xl relative overflow-hidden flex flex-col border-[8px] border-gray-800">
+        
+        <div id="screen-home" class="flex flex-col h-full w-full absolute top-0 left-0 bg-white z-10 fade-in">
+            <div class="bg-navy text-white pt-12 pb-4 px-5 rounded-b-3xl shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h1 class="text-2xl font-bold tracking-wide">2HMed<span class="text-magenta text-3xl leading-none">.</span></h1>
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-navy font-bold shadow-sm border-2 border-magenta">
+                        P
+                    </div>
+                </div>
+                <div class="bg-white rounded-full flex items-center px-4 py-2 shadow-inner">
+                    <span class="text-gray-400 mr-2">🔍</span>
+                    <input type="text" placeholder="ค้นหาอุปกรณ์การแพทย์..." class="w-full outline-none text-navy text-sm font-medium">
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scroll p-5 pb-24">
+                <div class="bg-white border-2 border-navy rounded-2xl p-4 mb-6 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-navy rounded-bl-full z-0 opacity-10"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-magenta text-xl">🛡️</span>
+                            <h2 class="text-navy font-bold text-sm">การันตีความปลอดภัย</h2>
+                        </div>
+                        <p class="text-xs text-gray-600">ซื้อสินค้าราคาสูงอย่างมั่นใจ ด้วยบริการผู้เชี่ยวชาญตรวจเช็คสภาพก่อนส่งมอบ</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-end mb-3">
+                    <h3 class="text-navy font-bold">สินค้าแนะนำสำหรับคุณ</h3>
+                    <span class="text-[10px] text-magenta font-bold underline cursor-pointer">ดูทั้งหมด</span>
+                </div>
+                
+                <div onclick="goToScreen('screen-product')" class="bg-white rounded-2xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer border border-gray-100 mb-4 transition transform hover:scale-[1.02]">
+                    <div class="h-40 bg-gray-100 relative">
+                        <img src="https://gf.lnwfile.com/_/gf/_raw/3q/8t/3u.jpg?auto=format&fit=crop&w=400&q=80" alt="Oxygen Concentrator" class="w-full h-full object-cover">
+                        <div class="absolute top-2 right-2 bg-navy text-white text-[10px] px-2 py-1 rounded-full font-bold shadow-md flex items-center gap-1">
+                            <span class="text-magenta text-xs">★</span> High-Value
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-navy font-bold text-sm mb-1 truncate">เครื่องผลิตออกซิเจน 5 ลิตร Yuwell</h4>
+                        <div class="flex justify-between items-end">
+                            <p class="text-gray-400 text-[10px]">สภาพ 90% • 📍 กทม.</p>
+                            <span class="text-magenta font-bold text-lg">฿15,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-white rounded-2xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer border border-gray-100 transition transform hover:scale-[1.02]">
+                        <div class="h-28 bg-gray-100 relative">
+                            <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=300&q=80" alt="Wheelchair" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3">
+                            <h4 class="text-navy font-bold text-[11px] mb-1 line-clamp-2 leading-tight">รถเข็นวีลแชร์อลูมิเนียม พับได้</h4>
+                            <span class="text-navy font-bold text-sm">฿3,500</span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer border border-gray-100 transition transform hover:scale-[1.02]">
+                        <div class="h-28 bg-gray-100 relative">
+                            <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=300&q=80" alt="Blood Pressure Monitor" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3">
+                            <h4 class="text-navy font-bold text-[11px] mb-1 line-clamp-2 leading-tight">เครื่องวัดความดันโลหิต Omron</h4>
+                            <span class="text-navy font-bold text-sm">฿850</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-orders" class="flex flex-col h-full w-full absolute top-0 left-0 bg-gray-50 z-10 hidden fade-in">
+            <div class="pt-12 pb-3 px-5 flex items-center bg-white shadow-sm sticky top-0 z-10">
+                <h1 class="text-navy font-bold text-lg flex-1 text-center">คำสั่งซื้อของฉัน</h1>
+            </div>
+
+            <div class="flex-1 flex flex-col items-center justify-center p-5 pb-24 text-center">
+                <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-inner mb-6 border-4 border-gray-100">
+                    <span class="text-5xl opacity-50">📭</span>
+                </div>
+                
+                <h2 class="text-navy font-bold text-lg mb-2">ยังไม่มีคำสั่งซื้อในขณะนี้</h2>
+                <p class="text-sm text-gray-500 mb-8 max-w-[250px]">คุณยังไม่ได้ทำรายการสั่งซื้อใดๆ ลองค้นหาอุปกรณ์การแพทย์ที่คุณต้องการดูสิ!</p>
+                
+                <button onclick="goToScreen('screen-home')" class="bg-magenta text-white font-bold py-3 px-8 rounded-full text-sm shadow-md hover:bg-[#b0164e] transition-all transform hover:scale-105">
+                    🔍 เริ่มค้นหาสินค้าเลย
+                </button>
+            </div>
+        </div>
+
+        <div id="screen-profile" class="flex flex-col h-full w-full absolute top-0 left-0 bg-gray-50 z-10 hidden fade-in">
+            <div class="pt-12 pb-3 px-5 flex items-center bg-navy text-white shadow-sm sticky top-0 z-10">
+                <h1 class="font-bold text-lg flex-1 text-center">บัญชีของฉัน</h1>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scroll p-5 pb-24">
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 mb-6 flex items-center gap-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-magenta rounded-bl-full z-0 opacity-5"></div>
+                    
+                    <div class="w-20 h-20 bg-gray-200 rounded-full border-2 border-magenta p-1 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Profile" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute bottom-0 right-0 bg-navy text-white text-[10px] w-6 h-6 flex items-center justify-center rounded-full border-2 border-white">
+                            ✓
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-navy font-bold text-lg leading-tight">Palm Kod Thē</h2>
+                        <p class="text-xs text-gray-500 mb-1">Business Analyst / MarTech</p>
+                        <div class="inline-flex items-center bg-[#fdf2f6] text-magenta text-[10px] font-bold px-2 py-1 rounded">
+                            🛡️ ยืนยันตัวตนแล้ว (KYC)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 mb-6 text-center">
+                    <div class="bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+                        <p class="text-xs text-gray-500 mb-1">สั่งซื้อแล้ว</p>
+                        <p class="text-navy font-bold text-lg">0</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+                        <p class="text-xs text-gray-500 mb-1">รายการโปรด</p>
+                        <p class="text-navy font-bold text-lg">12</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+                        <p class="text-xs text-gray-500 mb-1">คะแนนรีวิว</p>
+                        <p class="text-magenta font-bold text-lg">5.0</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+                    <div class="p-4 border-b border-gray-50 flex justify-between items-center cursor-pointer hover:bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-50 text-blue-600 p-2 rounded-xl">💳</span>
+                            <span class="text-sm font-bold text-navy">ช่องทางการชำระเงิน</span>
+                        </div>
+                        <span class="text-gray-400">›</span>
+                    </div>
+                    <div class="p-4 border-b border-gray-50 flex justify-between items-center cursor-pointer hover:bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-pink-50 text-magenta p-2 rounded-xl">📍</span>
+                            <span class="text-sm font-bold text-navy">ที่อยู่จัดส่ง</span>
+                        </div>
+                        <span class="text-gray-400">›</span>
+                    </div>
+                    <div class="p-4 border-b border-gray-50 flex justify-between items-center cursor-pointer hover:bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-gray-100 text-gray-600 p-2 rounded-xl">⚙️</span>
+                            <span class="text-sm font-bold text-navy">ตั้งค่าบัญชี</span>
+                        </div>
+                        <span class="text-gray-400">›</span>
+                    </div>
+                    <div class="p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-green-50 text-green-600 p-2 rounded-xl">💬</span>
+                            <span class="text-sm font-bold text-navy">ศูนย์ช่วยเหลือ</span>
+                        </div>
+                        <span class="text-gray-400">›</span>
+                    </div>
+                </div>
+
+                <button onclick="alert('สลับไปมุมมองผู้ขาย (Seller View)')" class="w-full bg-white border-2 border-navy text-navy font-bold py-3 rounded-xl text-sm shadow-sm hover:bg-gray-50 transition mb-4">
+                    🔁 สลับเป็นโหมด "ผู้ขาย"
+                </button>
+                
+                <button class="w-full text-gray-400 font-bold py-2 text-xs hover:text-red-500 transition">
+                    ออกจากระบบ
+                </button>
+            </div>
+        </div>
+
+        <div id="main-bottom-nav" class="absolute bottom-0 w-full bg-white border-t border-gray-100 flex justify-around py-4 pb-8 text-xs text-gray-400 z-50 shadow-[0_-5px_15px_rgba(0,0,0,0.03)]">
+            <div id="nav-home" onclick="goToScreen('screen-home')" class="flex flex-col items-center cursor-pointer text-navy font-bold transition-all">
+                <span class="text-lg mb-1">🏠</span> หน้าหลัก
+            </div>
+            <div id="nav-orders" onclick="goToScreen('screen-orders')" class="flex flex-col items-center cursor-pointer hover:text-navy transition-all">
+                <span class="text-lg mb-1">📦</span> คำสั่งซื้อ
+            </div>
+            <div id="nav-profile" onclick="goToScreen('screen-profile')" class="flex flex-col items-center cursor-pointer hover:text-navy transition-all">
+                <span class="text-lg mb-1">👤</span> บัญชี
+            </div>
+        </div>
+
+        <div id="screen-product" class="flex flex-col h-full w-full absolute top-0 left-0 bg-white z-20 hidden fade-in">
+            <div class="pt-12 pb-3 px-5 flex items-center bg-white border-b border-gray-100 sticky top-0 z-10">
+                <button onclick="goToScreen('screen-home')" class="text-navy text-xl mr-4 font-bold hover:text-magenta transition">←</button>
+                <h1 class="text-navy font-bold text-lg flex-1 text-center">รายละเอียดสินค้า</h1>
+                <div class="w-6"></div> 
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scroll pb-24">
+                <div class="h-64 bg-gray-200 flex items-center justify-center relative">
+                    <img src="https://gf.lnwfile.com/_/gf/_raw/3q/8t/3u.jpg?auto=format&fit=crop&w=600&q=80" alt="Oxygen Concentrator Detail" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="p-5">
+                    <h2 class="text-xl font-bold text-navy leading-tight mb-2">เครื่องผลิตออกซิเจน 5 ลิตร Yuwell (มือสองสภาพดี)</h2>
+                    <p class="text-2xl font-bold text-magenta mb-4">฿15,000</p>
+                    
+                    <div class="border-2 border-magenta rounded-2xl p-4 bg-[#fdf2f6] mb-6 relative shadow-sm">
+                        <div class="absolute -top-3 left-4 bg-magenta text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Recommended Service
+                        </div>
+                        <div class="flex items-start mt-2">
+                            <div class="bg-white p-2 rounded-full border border-magenta mr-3 shadow-sm">🛠️</div>
+                            <div>
+                                <h3 class="font-bold text-navy text-sm mb-1">บริการตรวจเช็คสภาพ & ทำความสะอาด</h3>
+                                <p class="text-xs text-gray-600 mb-2">ช่างผู้เชี่ยวชาญจะทำการตรวจสอบระบบ ทำความสะอาด และฆ่าเชื้อก่อนส่งมอบ เพื่อความปลอดภัยสูงสุดของผู้ป่วย</p>
+                                <div class="inline-block bg-white border border-gray-200 text-navy text-xs font-bold px-3 py-1 rounded-lg">
+                                    ค่าบริการ: <span class="text-magenta">฿500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-navy mb-2">รายละเอียด</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                        เครื่องใช้งานน้อยมาก ซื้อมาเมื่อเดือนที่แล้ว เสียงเงียบ ทำงานปกติ 100% มีอุปกรณ์สายท่อให้ใหม่ ไม่เคยผ่านการซ่อมใดๆ ค่ะ
+                    </p>
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 w-full bg-white border-t border-gray-100 p-4 pb-8 flex gap-3 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+                <button onclick="alert('ไปหน้าซื้อปกติ')" class="flex-1 border-2 border-navy text-navy font-bold py-3 rounded-xl text-sm flex flex-col items-center justify-center hover:bg-gray-50 transition">
+                    <span>ซื้อปกติ</span>
+                </button>
+                <button onclick="goToScreen('screen-checkout')" class="flex-[2] bg-navy text-white font-bold py-3 rounded-xl text-sm shadow-lg flex flex-col items-center justify-center hover:bg-[#0a1931e6] transition">
+                    <span>เพิ่มบริการตรวจเช็ค</span>
+                    <span class="text-[10px] font-normal opacity-80">จ่ายเฉพาะค่าบริการก่อน</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="screen-checkout" class="flex flex-col h-full w-full absolute top-0 left-0 bg-gray-50 z-30 hidden fade-in">
+            <div class="pt-12 pb-3 px-5 flex items-center bg-white shadow-sm sticky top-0 z-10">
+                <button onclick="goToScreen('screen-product')" class="text-navy text-xl mr-4 font-bold hover:text-magenta transition">←</button>
+                <h1 class="text-navy font-bold text-lg flex-1 text-center">ชำระเงิน (Split Payment)</h1>
+                <div class="w-6"></div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scroll p-5 pb-24">
+                <div class="bg-navy text-white p-4 rounded-2xl mb-6 shadow-md relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-magenta rounded-full opacity-20"></div>
+                    <h2 class="font-bold text-sm mb-1 flex items-center"><span class="mr-2">💡</span> ระบบชำระเงินแบบแบ่งจ่าย</h2>
+                    <p class="text-xs opacity-90 leading-relaxed">
+                        คุณกำลังเลือกใช้บริการตรวจเช็คสภาพ <b>กรุณาชำระเฉพาะ "ค่าบริการ" ในวันนี้</b> ส่วนค่าสินค้าจะชำระเมื่อสินค้าผ่านการตรวจสอบจากศูนย์แล้ว
+                    </p>
+                </div>
+
+                <h3 class="font-bold text-navy text-sm mb-3">สรุปคำสั่งซื้อ</h3>
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-6 space-y-3">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">เครื่องผลิตออกซิเจน 5 ลิตร</span>
+                        <span class="text-navy font-bold">฿15,000</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">ค่าจัดส่ง (ประเมิน)</span>
+                        <span class="text-navy font-bold">฿200</span>
+                    </div>
+                    
+                    <div class="border-t border-dashed border-gray-200 py-2 my-2"></div>
+                    
+                    <div class="flex justify-between items-center bg-[#fdf2f6] border border-magenta p-3 rounded-xl shadow-sm">
+                        <div>
+                            <span class="block text-magenta font-bold text-sm">ยอดที่ต้องชำระวันนี้</span>
+                            <span class="text-[10px] text-gray-500">(ค่าบริการตรวจเช็คสภาพ)</span>
+                        </div>
+                        <span class="text-magenta font-bold text-xl">฿500</span>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <div>
+                            <span class="block text-navy font-bold text-sm">ยอดค้างชำระ</span>
+                            <span class="text-[10px] text-gray-500">(ชำระหลังตรวจสภาพผ่าน)</span>
+                        </div>
+                        <span class="text-navy font-bold text-lg">฿15,200</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 w-full bg-white border-t border-gray-100 p-4 pb-8 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+                <button onclick="goToScreen('screen-tracking')" class="w-full bg-magenta text-white font-bold py-4 rounded-xl text-sm shadow-md flex justify-between px-6 items-center hover:bg-[#b0164e] transition">
+                    <span>ยืนยันชำระค่าบริการ</span>
+                    <span class="text-lg">฿500</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="screen-tracking" class="flex flex-col h-full w-full absolute top-0 left-0 bg-gray-50 z-40 hidden fade-in">
+            <div class="pt-12 pb-3 px-5 flex items-center bg-navy text-white shadow-sm sticky top-0 z-10">
+                <button onclick="goToScreen('screen-home')" class="text-white text-xl mr-4 font-bold">✕</button>
+                <h1 class="font-bold text-lg flex-1 text-center">สถานะคำสั่งซื้อ</h1>
+                <div class="w-6"></div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto hide-scroll p-5 pb-24">
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 text-center shadow-sm">
+                    <div class="text-green-500 text-3xl mb-2">✅</div>
+                    <h2 class="font-bold text-navy text-sm mb-1">สินค้าผ่านการตรวจสอบแล้ว!</h2>
+                    <p class="text-xs text-gray-600">อุปกรณ์อยู่ในสภาพสมบูรณ์ พร้อมจัดส่งถึงมือคุณ</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6 relative">
+                    <div class="absolute left-[31px] top-8 bottom-8 w-0.5 bg-gray-200 z-0"></div>
+                    
+                    <div class="flex items-start mb-6 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-[10px] mr-4 mt-0.5 shrink-0">✓</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-navy">ชำระค่าบริการสำเร็จ</h4>
+                            <p class="text-[10px] text-gray-400">12 ต.ค. 10:30</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-6 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-[10px] mr-4 mt-0.5 shrink-0">✓</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-navy">ผู้ขายส่งของถึงศูนย์</h4>
+                            <p class="text-[10px] text-gray-400">14 ต.ค. 14:15</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-6 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-magenta text-white flex items-center justify-center text-[10px] mr-4 mt-0.5 shrink-0 shadow-[0_0_10px_rgba(216,27,96,0.5)]">🛠️</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-magenta">ตรวจสอบสภาพ & ทำความสะอาด</h4>
+                            <p class="text-[10px] text-gray-500">สถานะ: ผ่านการตรวจสอบ (ออกใบรับรองแล้ว)</p>
+                            <a href="#" class="inline-block mt-2 text-[10px] text-navy underline font-bold border border-navy px-2 py-1 rounded hover:bg-navy hover:text-white transition">📄 ดูใบรับรอง Digital Certificate</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center text-[10px] mr-4 mt-0.5 shrink-0">📦</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-400">รอจัดส่งให้ผู้ซื้อ</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-navy rounded-2xl p-5 text-center text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-16 h-16 bg-magenta rounded-full opacity-50"></div>
+                    <h3 class="font-bold text-sm mb-2 relative z-10">ขั้นตอนสุดท้าย</h3>
+                    <p class="text-xs opacity-90 mb-4 relative z-10">กรุณาชำระเงินค่าสินค้าส่วนที่เหลือ เพื่อให้ศูนย์ดำเนินการจัดส่งสินค้าไปยังที่อยู่ของคุณ</p>
+                    <div class="bg-white/10 rounded-xl p-3 mb-4 flex justify-between items-center relative z-10">
+                        <span class="text-sm">ยอดค้างชำระ</span>
+                        <span class="text-xl font-bold text-magenta">฿15,200</span>
+                    </div>
+                    <button onclick="alert('ไปหน้า Payment Gateway จ่ายเงินก้อนสุดท้าย')" class="w-full bg-magenta text-white font-bold py-3 rounded-xl text-sm shadow-md hover:bg-[#b0164e] transition relative z-10">
+                        ชำระเงินส่วนที่เหลือทันที
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function goToScreen(screenId) {
+            // Hide all screens
+            const allScreens = ['screen-home', 'screen-orders', 'screen-profile', 'screen-product', 'screen-checkout', 'screen-tracking'];
+            allScreens.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            
+            // Show target screen
+            document.getElementById(screenId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+
+            // Update Main Bottom Nav Active State
+            const mainNav = document.getElementById('main-bottom-nav');
+            const navIds = ['nav-home', 'nav-orders', 'nav-profile'];
+            
+            // If target is one of the main tabs, show bottom nav and update active color
+            if (screenId === 'screen-home' || screenId === 'screen-orders' || screenId === 'screen-profile') {
+                mainNav.classList.remove('hidden');
+                
+                navIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (id === 'nav-' + screenId.split('-')[1]) {
+                        el.classList.add('text-navy', 'font-bold');
+                        el.classList.remove('text-gray-400', 'font-normal');
+                    } else {
+                        el.classList.add('text-gray-400', 'font-normal');
+                        el.classList.remove('text-navy', 'font-bold');
+                    }
+                });
+            } else {
+                // Hide main bottom nav on sub-screens (Product, Checkout, Tracking)
+                mainNav.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
